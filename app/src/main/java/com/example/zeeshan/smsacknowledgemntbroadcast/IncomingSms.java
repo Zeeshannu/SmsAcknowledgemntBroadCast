@@ -61,12 +61,12 @@ public class IncomingSms extends BroadcastReceiver {
 
 
 
-                    Intent in = new Intent(context,MainActivity.class);
-                    PendingIntent pI = PendingIntent.getActivity(context,(int)System.currentTimeMillis(),in,0);
+                    Intent intent1 = new Intent(context,MainActivity.class);
+                    PendingIntent pI = PendingIntent.getActivity(context,(int)System
+                            .currentTimeMillis(),intent1,0);
 
                     //Step 1 - Create Notification Builder
                     Notification noti;
-
 
                     //Step 2 - Setting Notification Properties
                     noti = new Notification.Builder(context).setContentTitle("New " +
@@ -75,16 +75,12 @@ public class IncomingSms extends BroadcastReceiver {
                             .setContentText("Subject  "+message)
                             .setSmallIcon(R.drawable.abc)
                             .setContentIntent(pI)
-                            //Step 3 - Attach Actions
-
-                            // This is an optional part and required if you want to attach an action with
-                            //the notification. An action allows users to go directly from the
-                            //notification to an Activity in your application, where they can look at one
-                            //or more events or do further work.
-
                             .addAction(R.drawable.abc,"Call",pI)
                             .addAction(R.drawable.abc,"More",pI)
                             .addAction(R.drawable.abc,"Extra",pI).build();
+
+
+
 
                     NotificationManager notificationManager;
                     notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
